@@ -24,10 +24,11 @@ app.get('/', async (req, res) => {
     const { fromCurrency, toCurrency, amount } = req.query;
 
     if(!fromCurrency || !toCurrency || !amount) {
-        res.send("Please provide all the requried parameters");
+        // responding returns json key
+        res.json({ message: "Please provide all the requried parameters" });
     } else {
         const message = await convertCurrency(fromCurrency, toCurrency, amount)
-    res.json(message)
+    res.json({ message })
     }
 });
 
